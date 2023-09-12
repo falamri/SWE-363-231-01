@@ -1,0 +1,52 @@
+
+/*  
+body {
+    background-color: black;
+    color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: sans-serif;
+}
+
+img {
+    display: block;
+}
+
+a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+nav li {
+    display: inline;
+}
+
+a:visited {
+    color: green;
+}
+
+footer {
+    font-family: sans-serif;
+}
+
+*/
+
+td {
+    background-color: #A9A9A9;
+    border-radius: 10px;
+}
+
+td:hover {
+    background-color: #D6EEEE;
+}
+
+table{
+    border-spacing: 10px;
+    margin-left: auto; 
+    margin-right: auto;
+}
