@@ -12,6 +12,23 @@ td:hover {
     background-color: #D6EEEE;
 }
 
+th{
+    text-transform: uppercase; 
+}
+
+.top {
+    background-color: rgb(122, 28, 223);
+  }
+
+em {
+    color:#a200fa;
+}
+
+#the_most_important {
+    text-transform:uppercase;
+    color:#faa000;
+}
+
 table{
     border-spacing: 10px;
     margin-left: auto; 
