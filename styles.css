@@ -132,3 +132,272 @@ a:visited{
 footer {
     font-family: sans-serif;
 }
+
+/* at AHC... */
+header {
+    float: left;
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* ul */
+.navbar-header-list-left{
+    width: 50%;
+    display: flex;
+    float: left;
+}
+
+.navbar-header-list-left li{
+    list-style: none;
+    padding: 26px 30px;
+}
+
+.navbar-header-list-left li a{
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-header-list-right{
+    float: right;
+}
+
+.navbar-header-list-right li a{
+    text-decoration: none;
+    color: white;
+}
+
+#sign-in{
+    display: flex;
+    float: right;
+    list-style: none;
+    padding: 26px 30px;
+    text-decoration: none;
+    float: right;
+}
+
+#sign-up{
+    display: flex;
+    float: right;
+    list-style: none;
+    padding: 26px 30px;
+    text-decoration: none;
+    float: right;
+    background-color: transparent;
+    flex-shrink: 0;
+    border-radius: 52px;
+    border: 2px solid #22A75D;
+}
+
+
+#headA{
+    background: linear-gradient(to right, #2B3087, #00B4EC);
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 16px;
+    font-family: Century Gothic;
+    font-weight: 700;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+#imgA{
+    float: right;
+    width: auto;
+    height: auto;
+    transform: rotate(6.711deg);
+}
+
+#headAbody1{
+    width: 562px;
+    color: #FFF;
+    font-family: Century Gothic;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+    letter-spacing: -0.96px;
+}
+
+.headbody{
+    width: 637px;
+    width: 531px;
+    color: #DDE2FF;
+    font-family: Century Gothic;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    opacity: 0.5;
+}
+
+.bodyAButton{
+    width: 147px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 52px;
+    background: #22A75D;
+    box-shadow: 0px 15px 25px 0px rgba(34, 167, 93, 0.25);
+}
+
+.info-shape-1{
+    float: left;
+    width: 49%;
+    height: 100%;
+    background: #171B29;
+    border-radius: 25px;
+}
+
+.info-shape-2{
+    float: right;
+    width: 49%;
+    height: 100%;
+    background: #171B29;
+    border-radius: 25px;
+}
+
+.info-text{
+    color: #FFF;
+    font-family: Century Gothic;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 150% */
+    text-align: left;
+}
+
+#info-users{
+    color: #2278D4;
+    font-family: Century Gothic;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+    text-decoration-line: underline;
+}
+
+#info-shareholders{
+    color: #22A75D;
+    font-family: Century Gothic;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+    text-decoration-line: underline;
+}
+
+.info-footer{ 
+    font-size: 14px; 
+    font-family: Century Gothic; 
+    font-weight: 700; 
+    text-decoration: underline; 
+    word-wrap: break-word;
+}
+
+#info-user-footer{
+    color: #2278D4;
+}
+
+#info-shareholder-footer{
+    color: #22A75D;
+}
+
+.different{
+    float: right;
+    width: 960px;
+    height: 800px;
+    flex-shrink: 0;
+    border-radius: 300px 0px 0px 0px;
+    background: #FFF;
+
+}
+
+
+.dif-header{
+    color: #0F1320;
+    font-family: Century Gothic;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+    text-align: center;
+
+}
+
+.dif-body{
+ 
+    color: #0F1320;
+    font-family: Century Gothic;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    opacity: 0.6;
+    text-align: center;
+}
+
+.tg{
+    width: 283.963px;
+    height: 283.963px;
+    flex-shrink: 0;
+}
+
+.features{
+    color: #FFF;
+    font-family: Century Gothic;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+}
+
+.package-caption{
+    color: #FFF;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+}
+
+.package-headers{
+    color: #191B21;
+    font-family: Century Gothic;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 168.75% */
+}
+
+/* nav */
+.navbar-footer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+
+}
+
+/* ul */
+.navbar-footer-list{
+    width: 25%;
+    display: flex;
+}
+
+.navbar-footer-list li{
+    list-style: none;
+    padding: 26px 30px;
+}
+
+.navbar-footer-list li a{
+    text-decoration: none;
+    color: white;
+}
