@@ -209,9 +209,9 @@ header {
 }
 
 #imgA{
-    float: right;
+    float:right;
     width: auto;
-    height: auto;
+    height:auto;
     transform: rotate(6.711deg);
 }
 
