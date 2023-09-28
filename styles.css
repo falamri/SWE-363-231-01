@@ -526,3 +526,44 @@ header {
     text-decoration: none;
     color: white;
 }
+
+.loader {
+    border-top: 8px solid #0F3240;
+    border-right: 8px solid white;
+    border-bottom: 8px solid #0F3240;
+    border-left: 8px solid white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border-radius: 50%;
+    animation: opacityOnAndOff 2s normal forwards;
+  }
+
+  @keyframes opacityOnAndOff {
+    0% {
+        opacity: 0;
+        -webkit-transform: rotate(0deg);
+    }
+    50%{
+      opacity: 1;
+      -webkit-transform: rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: rotate(360deg);
+    }
+
+}
+
+body *:not(.loader) {
+    animation: cssAnimation 0s 2s forwards;
+    visibility: hidden;
+  }
+  
+  @keyframes cssAnimation {
+    to   { visibility: visible; }
+  }
