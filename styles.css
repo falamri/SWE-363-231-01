@@ -76,6 +76,7 @@ figure figcaption {
 
 h1, h2, h3, h4, h5, h6{
     text-transform: uppercase;
+
 }
 
 h2 {
@@ -137,7 +138,6 @@ footer {
 header {
     float: left;
     width: 100%;
-    color: #e42424;
     text-align: center;
     font-family: Century Gothic;
     font-size: 14px;
@@ -147,78 +147,63 @@ header {
 }
 
 /* ul */
-.navbar-header-list-left{
-    width: 50%;
-    display: flex;
-    float: left;
-}
 
-.navbar-header-list-left li{
-    list-style: none;
-    padding: 26px 30px;
-}
 
-.navbar-header-list-left li a{
-    text-decoration: none;
-    color: rgb(207, 29, 29);
-}
-
-.navbar-header-list-right{
-    float: right;
-}
-
-/*  */
-.navbar-header-list-right ul{
-    padding-left: 0px;
-}
-
-.navbar-header-list-right li{
-    display: inline;
-    color: #6941C6;
-    text-align: center;
-    /* Text sm/Medium */
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 20px; /* 142.857% */
-    padding: 2px 10px;
-    background-color: transparent;
-    border-radius: 16px;
-}
-.navbar-header-list-right li a{
-    text-decoration: none;
-    color: white;
-}
-
-/*  */
-#sign-in{
-    display: flex;
-    float: right;
-    list-style: none;
-    padding: 26px 30px;
-    text-decoration: none;
-    float: right;
-}
-
-#sign-up{
-    display: flex;
-    float: right;
-    list-style: none;
-    padding: 26px 30px;
-    text-decoration: none;
-    float: right;
-    background-color: transparent;
-    flex-shrink: 0;
-    border-radius: 52px;
-    border: 2px solid #22A75D;
-}
-/*  */
-.navbar-header{
+#navbar-header{
     position: fixed;
     top:0px;
     background-color: #0F3240;
     display: block;
     width: 100%;
     z-index: 1;
+}
+
+#navbar-header input {
+    position: absolute;
+    width:40px;
+    cursor:pointer;
+    opacity: 0; 
+    z-index: 2; /* in order to place the checkbox over the hamburguer */
+    -webkit-touch-callout: none;
+  }
+
+#navbar-header span {
+    display: block; /* to ensure that each span element occupies its own line. */
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px; /* create some spacing between the span elements. */
+    position: relative; /* allow for positioning changes in relation to the parent div.*/
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1; /* ensure that the span element is under the checkbox */
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+    transform-origin: 4px 0px; /* set to 4px 0px to specify the center of rotation for the transform property above. */
+
+  }
+
+#navbar-header-list-left {
+    position: absolute; /* allow us to position the menu on top of the rest of the content. */
+    left: -300px;/* This property moves the menu outisde of the viewport*/
+    top: 80px; /*This property sets the distance between the top edge of the menu and the top edge of the #menuToggle div.*/
+    width: 200px; 
+    margin: -100px 0 0 -50px;/* The negative margin values are used to move the menu up and to the left to center it vertically and horizontally within the #menuToggle div. */
+    padding: 50px;
+    padding-top: 125px;
+    background: #ededed;
+    list-style-type: none; /* removes the default bullet points of the list. */
+    -webkit-font-smoothing: antialiased; /*This property sets the font smoothing for webkit browsers. */
+    
+    transition: left 0.5s; /* This property sets the transition effect for the left property. This will create a smooth animation when the menu slides in from the left.*/
+  }
+  
+#navbar-header-list-left li {
+    padding: 10px 0;
+    font-size: 22px;
+  }
+
+#navbar-header input:checked ~ ul {
+    left:40px;
 }
 
 .navbar-header li{
@@ -230,14 +215,11 @@ header {
 }
 
 .navbar-header img:hover, .navbar-header ul li a{
+    display: block;
     color: #6941C6;
 }
 
 .navbar-header-list-left > *{
-    margin: 12px 0px;
-}
-
-.navbar-header-list-right > *{
     margin: 12px 0px;
 }
 
@@ -254,35 +236,6 @@ header {
     color: #1A1A1A;
 }
 
-@media screen and (min-width:834px) {
-    
-    body{
-        padding-top: 0px;
-    }
-
-    nav {
-        padding-right: 10px;
-    }
-
-    nav ul{
-        float: right;
-    }
-    
-    nav li {
-        display: inline-block;
-        margin: 0px 4px;
-    }
-
-    nav img {
-        display: none;
-    }
-
-    .all {
-        display: grid;
-        grid-template-columns: auto auto;
-        column-gap: 16px;
-    }
-}
 /*  */
 #headA{
     background: linear-gradient(to right, #2B3087, #00B4EC);
@@ -295,6 +248,8 @@ header {
     font-weight: 700;
     line-height: 24px;
     word-wrap: break-word;
+    font-style: normal;
+
 }
 
 
@@ -312,11 +267,12 @@ header {
   
     background-image: url(photos/example2.png);
     
-    width:800px;
-    height:800px;  
+    width: 783.856px;
+    height: 652.953px;
     float: right;
     background-repeat: no-repeat;
     position:relative;
+    
 }
 
 .watermarked h2{
@@ -336,26 +292,24 @@ header {
 }
 
 #headAbody1{
-    width: 562px;
     color: #FFF;
     font-family: Century Gothic;
-    font-size: 48px;
+    font-size: 36px;
     font-style: normal;
     font-weight: 700;
-    line-height: 54px; /* 112.5% */
-    letter-spacing: -0.96px;
+    line-height: 40px; /* 111.111% */
+    letter-spacing: -0.72px;
 }
 
 .headbody{
-    width: 637px;
-    width: 531px;
+    width: 335px;
     color: #DDE2FF;
     font-family: Century Gothic;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
-    opacity: 0.5;
+    line-height: 22px; /* 157.143% */
+    opacity: 0.6;
 }
 
 .bodyAButton{
@@ -365,8 +319,6 @@ header {
     border-radius: 52px;
     background: #22A75D;
     box-shadow: 0px 15px 25px 0px rgba(34, 167, 93, 0.25);
-    min-width: 120px;
-    min-height: 30px;
 }
 
 .bodyAButton:hover{
@@ -405,35 +357,32 @@ header {
 }
 
 .info-shape-1{
-    float: left;
-    width: 49%;
-    height: 100%;
-    background: #012840;
-    border-radius: 25px;
+    width: 335px;
+    height: 420px;
+    flex-shrink: 0;
+    background: #171B29;
 }
 
 .info-shape-2{
-    float: right;
-    width: 49%;
-    height: 100%;
-    background: #012840;
-    border-radius: 25px;
+    width: 335px;
+    height: 420px;
+    flex-shrink: 0;
+    background: #171B29;
 }
 
 .info-text{
     color: #FFF;
     font-family: Century Gothic;
-    font-size: 36px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 700;
-    line-height: 54px; /* 150% */
-    text-align: left;
+    line-height: 54px; /* 192.857% */
 }
 
 #info-users{
     color: #2278D4;
     font-family: Century Gothic;
-    font-size: 36px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 700;
     line-height: 54px;
@@ -443,7 +392,7 @@ header {
 #info-shareholders{
     color: #22A75D;
     font-family: Century Gothic;
-    font-size: 36px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 700;
     line-height: 54px;
@@ -467,13 +416,10 @@ header {
 }
 
 .different{
-    float: right;
-    width: 960px;
-    height: 800px;
+    width: 375px;
+    height: 946px;
     flex-shrink: 0;
-    border-radius: 300px 0px 0px 0px;
     background: #FFF;
-
 }
 
 .dif-header{
@@ -484,19 +430,18 @@ header {
     font-weight: 700;
     line-height: 54px; /* 112.5% */
     text-align: center;
-
 }
 
 .dif-body{
  
+    width: 335px;
     color: #0F1320;
     font-family: Century Gothic;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px; /* 171.429% */
     opacity: 0.6;
-    text-align: center;
 }
 
 .tg{
@@ -508,10 +453,10 @@ header {
 .features{
     color: #FFF;
     font-family: Century Gothic;
-    font-size: 48px;
+    font-size: 36px;
     font-style: normal;
     font-weight: 700;
-    line-height: 54px; /* 112.5% */
+    line-height: 54px; /* 150% */
 }
 
 .package-caption{
@@ -550,7 +495,7 @@ header {
 
 .navbar-footer-list li{
     list-style: none;
-    padding: 26px 30px;
+    padding: 20px 20px;
 }
 
 .navbar-footer-list li a{
