@@ -8,47 +8,74 @@
     <title>orderNow</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dark_theme.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
 </head>
 
 <body>
     
-    <label for="organization-choice">Who are you ordering for:</label>
-    <input list="organization-type" id="1" name="organization-choice" />
+    <header> <h1>Fill out the Following Form to Order</h1></header>
 
-    <datalist id="organization-type">
-        <option value="Myself"></option>
-        <option value="A private hospital"></option>
-        <option value="A public hospital"></option>
-        <option value="private Healthcare organization"></option>
-        <option value="public Healthcare organization"></option>
-    </datalist> <br><br>
+    <form class="pure-form pure-form-stacked">
+        <fieldset>
 
-    <label for="phone">Enter a phone number:</label>
-    <input type="tel" id="phone" name="phone" placeholder="+966512345678" pattern="+[0-9]{12}">
-    
-    <br><br>
-    <label for="fname">First name:</label>
-    <input type="text" id="fname" name="fname" autocomplete="off"><br><br>
-    <label for="lname">Last name:</label>
-    <input type="text" id="lname" name="lname" autocomplete="off"><br><br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" autocomplete="on"><br><br>
+            <legend></legend>
 
+            <div class="order pure-g1">
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-first-name">First Name</label>
+                    <input type="text" id="multi-first-name" class="pure-u-1-2" required/>
+                </div>
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-last-name">Last Name</label>
+                    <input type="text" id="multi-last-name" class="pure-u-1-2" required/>
+                </div>
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-email">E-Mail</label>
+                    <input type="email" id="multi-email" class="pure-u-1-2" placeholder="example@organization.example" required/>
+                </div>
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-city">Phone Number</label>
+                    <input type="tel" id="multi-phone" required class="pure-u-1-2" placeholder="+966 512345678" pattern="+[0-9] {12}">
+                </div>
+            
+                <datalist class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-who">Entity</label>
+                    <select id="multi-who" class="pure-input-1-2">
+                        <option>Myself</option>
+                        <option>A private hospital</option>
+                        <option>A public hospital</option>
+                        <option>private Healthcare organization</option>
+                        <option>public Healthcare organization</option>
+                    </select>
+                </datalist>
 
-    <label for="package-choice">Package you are ordering:</label>
-    <input list="package-type" id="1" name="package-choice" />
+                <datalist class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-package">Package</label>
+                    <select id="multi-package" class="pure-input-1-2">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </datalist>
 
-    <datalist id="package-type">
-        <option value="A"></option>
-        <option value="B"></option>
-        <option value="C"></option>
-    </datalist> <br><br>
+            </div>
 
-    <form>
-    <aside> 
-        <button type="button" class="submit_button" onclick="location.href='orderConf.html';"> Submit </button>
-    </aside>
-</form>
+            <div>
+                <label for="multi-terms" class="pure-checkbox">
+                    <input type="checkbox" id="multi-terms" required/> I've read the terms and conditions
+                </label>
+            
+                <button type="submit" class="submit-button pure-button-primary" onclick="location.href='orderConf.html';">Submit</button>
+            </div>
+        </fieldset>
+    </form>
 
 </body>
 </html>

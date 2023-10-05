@@ -9,6 +9,10 @@
     <title>Contact</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dark_theme.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
 </head>
 
 <body>
@@ -26,35 +30,44 @@
     </p>
     
     <p>
-        <p>
-            <form action="mailto:s202039420@kfupm.edu.sa" method="get" class="form">
-                
-                <div class="form">
-                    <label for="name">Enter your name: </label>
-                    <input type="text" name="name" id="name" required />
+        <form action="mailto:s202039420@kfupm.edu.sa" method="get" class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="aligned-name">Name</label>
+                    <input type="text" id="aligned-name" required/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
                 </div>
                 
-                <div class="form">
-                    <label for="email">Enter your email: </label>
-                    <input type="email" name="email" id="email" required />
+                <div class="pure-control-group">
+                    <label for="aligned-email">Email Address</label>
+                    <input type="email" id="aligned-email" placeholder="example@example.sa" required/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
                 </div>
 
-                <div class="form">
-                    <input type="text" placeholder="Subject" name="subject" required />
+                <div class="pure-control-group">
+                    <label for="aligned-subject"></label>
+                    <input type="text" name="subject" placeholder="subject" required/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
                 </div>
 
-                <div class="form">
-                    <textarea placeholder="Your message" name="body" required></textarea>
+                <div class="pure-control-group">
+                    <label for="aligned-textbox"></label>
+                    <textarea class="pure-input-1-2" placeholder="Your message"></textarea>
                 </div>
 
-                <div class="form">
-        
-                    <button type="button" class="submit_button" onclick="location.href='formConf.html';"> Submit </button>
-               
+                <div class="pure-controls">
+                    <label for="aligned-cb" class="pure-checkbox">
+                        <input type="checkbox" id="aligned-cb" required/> I've read the terms and conditions
+                    </label>
+                
+                    <label for="aligned-cb" class="pure-checkbox">
+                        <input type="checkbox" id="aligned-cb" /> Send me promotions about AHC products
+                    </label>
+                
+                    <button type="submit" class="submit-button pure-button-primary">Submit</button>
                 </div>
-
-            </form>
-        </p>
+            </fieldset>
+        </form>
     </p>
     
 </body>

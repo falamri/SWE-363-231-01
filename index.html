@@ -15,10 +15,13 @@
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="dark_theme.css">
         <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
     </head>
 
     <body>
+        
         <div class="loader"></div>
         <nav id="navbar-header"> 
             <input type="checkbox" />
@@ -39,10 +42,9 @@
 
         <br><br><br><br><br>
         <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
 
-        <div class="watermarked">
+        <input type="text" name="_csrf" hidden>
+        <div class="watermarked" class="pure-img">
         <h2>AHC</h2>
         </div>
 
@@ -60,8 +62,10 @@
                 and compliance.</p>
 
 
-        <button class="bodyAButton" type="button" onclick="location.href='services.html';"> Learn More </button>
-       
+        <button class="button-bodyA pure-button" id="button-bodyA" onclick="location.href='services.html';"> 
+            Learn More 
+        </button> 
+
         <br><br><br><br>
         <br><br><br><br>
         <br><br><br><br>
@@ -137,16 +141,12 @@
         
         <p class="features">state of the art treatment</p>
         
-        <table class="tg">
-            <thead>
-              <tr>
-                <td class="tg-1">Robotic Surgery</td>
-                <td class="tg-2">3D Mapping</td>
-                <td class="tg-3">3D Printed organs</td>
-                <td class="tg-4">AI Surgery</td>
-              </tr>
-            </thead>
-        </table>
+        <div class="pure-g">
+            <div class="pure-u-1-1"><p>Robotic Surgery</p></div>
+            <div class="pure-u-1-1"><p>3D Mapping</p></div>
+            <div class="pure-u-1-1"><p>AI Surgery</p></div>
+            <div class="pure-u-1-1"><p>3D Printed organs</p></div>
+        </div>
         <p class="dates">4/10/2023</p>
 
         <br><br><br><br><br>
@@ -154,18 +154,18 @@
         <br><br><br><br><br>
         <br><br><br><br><br>
         
-        <table class="tg-1">
-            <thead>
-              <tr>
-                <td class="tg-0lax">
+        <table class="table-og">
+            <thead class="thead-og">
+              <tr class="tr-og">
+                <td class="td-og">
                     <h2 class="package-headers">Package A</h2>
                     <P>This is package A and it is for $1.5</P>
                 </td>
-                <td class="tg-0lax"><h2>
+                <td class="td-og"><h2>
                     <h2 class="package-headers">Package C</h2>
                     <P>This is package C and it is for $20</P>
                 </td>
-                <td class="tg-0lax"><h2>
+                <td class="td-og"><h2>
                     <h2 class="package-headers">Package B</h2>
                     <P>This is package B and it is for $10</P>
                 </td>
@@ -177,35 +177,35 @@
 
         <br><br><br><br><br><br><br><br><br><br>
 
-        <table>
-            <tr>
-                <td> BrandShield</td> <!-- Reputation Management -->
-                <td rowspan="4">FortiGuard</td> <!-- Prevention of Data Breaches -->
-                <td rowspan="2">CyberSafe</td> <!-- Data Protection -->
-                <td colspan="5" rowspan="2">MedSecure</td> <!-- Prevention of Medical Device Compromises -->
-                <td>CyberAware</td> <!-- Threat Intelligence -->
+        <table class="table-og">
+            <tr class="tr-og">
+                <td class="td-og"> BrandShield</td> <!-- Reputation Management -->
+                <td class="td-og" rowspan="4">FortiGuard</td> <!-- Prevention of Data Breaches -->
+                <td class="td-og" rowspan="2">CyberSafe</td> <!-- Data Protection -->
+                <td class="td-og" colspan="5" rowspan="2">MedSecure</td> <!-- Prevention of Medical Device Compromises -->
+                <td class="td-og">CyberAware</td> <!-- Threat Intelligence -->
             </tr>
-            <tr>
-                <td rowspan="2">RapidRestore</td> <!-- Incident Recovery and Remediation -->
-                <td rowspan="4">RiskShield</td> <!-- Reduced Legal and Financial Risks -->
+            <tr class="tr-og">
+                <td class="td-og" rowspan="2">RapidRestore</td> <!-- Incident Recovery and Remediation -->
+                <td class="td-og" rowspan="4">RiskShield</td> <!-- Reduced Legal and Financial Risks -->
             </tr>
-            <tr>
-                <td colspan="3" rowspan="3">CryptoGuard</td> <!-- Protection against Ransomware -->
-                <td colspan="2" rowspan="3">CyberResilient</td> <!-- Operational Continuity -->
+            <tr class="tr-og">
+                <td class="td-og" colspan="3" rowspan="3">CryptoGuard</td> <!-- Protection against Ransomware -->
+                <td class="td-og" colspan="2" rowspan="3">CyberResilient</td> <!-- Operational Continuity -->
             </tr>
-            <tr>
-                <td>ComplyGuard</td> <!-- Regulatory Compliance -->
+            <tr class="tr-og">
+                <td class="td-og">ComplyGuard</td> <!-- Regulatory Compliance -->
             </tr>
-            <tr>
-                <td colspan="2" rowspan="3">CyberSmart</td> <!-- Enhanced Employee Awareness -->
+            <tr class="tr-og">
+                <td class="td-og" colspan="2" rowspan="3">CyberSmart</td> <!-- Enhanced Employee Awareness -->
             </tr>
-            <tr>
-                <td colspan="2" rowspan="2">SecurScan</td> <!-- Vulnerability Management -->
-                <td colspan="5">ThreatSentinel</td> <!-- Proactive Threat Monitoring -->
+            <tr class="tr-og">
+                <td class="td-og" colspan="2" rowspan="2">SecurScan</td> <!-- Vulnerability Management -->
+                <td class="td-og" colspan="5">ThreatSentinel</td> <!-- Proactive Threat Monitoring -->
             </tr>
-            <tr>
-                <td colspan="2">SecureNet</td> <!-- Partner and Vendor Risk Management -->
-                <td colspan="4">CyberTranquility</td> <!-- Peace of Mind -->
+            <tr class="tr-og">
+                <td class="td-og" colspan="2">SecureNet</td> <!-- Partner and Vendor Risk Management -->
+                <td class="td-og" colspan="4">CyberTranquility</td> <!-- Peace of Mind -->
             </tr>
         </table>
         <p class="dates">4/10/2023</p>

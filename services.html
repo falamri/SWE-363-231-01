@@ -9,18 +9,16 @@
     <title>services</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="dark_theme.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
     
 </head>
 
 <body>
 
-    <h1>
-        Services
-    </h1> 
-
-    <p>             
-    <table>
-
+    <table class="pure-table pure-table-horizontal">
         <thead>
             <tr>
                 <th>Package</th>
@@ -29,8 +27,6 @@
                 <th>Price</th>
             </tr>
         </thead>
-        <!-- td-coloumn, tr-row -->
-        <!-- First row -->
         <tbody>
             <tr>
                 <td>A</td>  
@@ -44,22 +40,17 @@
                 <td>YES</td>
                 <td>$5</td>
             </tr>
-        </tbody>
-
-        <tfoot>
             <tr>
                 <td>C</td>
                 <td class="top">unlimited</td>
                 <td>YES</td>
                 <td>$20</td>
-            </tr>     
-        </tfoot>
-            
+            </tr>
+        </tbody>
         <caption>
-            Service Packages 
+            <h2  class="s-caption">Service Packages</h2> 
         </caption>
     </table>
-    </p>
 
 </body>
 </html>
