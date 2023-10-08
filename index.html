@@ -86,7 +86,7 @@
                 security of their digital assets.
             </p>
             
-            <footer class="info-footer" id="info-user-footer">Learn More</footer>
+            <footer class="info-footer" id="info-user-footer"><a id="info-user-footer1" href="services.html">Learn More</a></footer>
             <p class="dates">4/10/2023</p>
         </div>
         
@@ -107,7 +107,7 @@
 
             </p>
 
-            <footer class="info-footer" id="info-shareholder-footer">Learn More</footer>
+            <footer class="info-footer" id="info-shareholder-footer"><a id="info-shareholder-footer1" href="services.html">Learn More</a></footer>
 
             <p class="dates">4/10/2023</p>
         </div>
@@ -141,20 +141,20 @@
         <br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br>
         
-        <p class="features">state of the art treatment</p>
+        <p class="features">State of the art treatment</p>
         
         <div class="pure-g">
-            <div class="pure-u-1-1"><p>Robotic Surgery</p></div>
-            <div class="pure-u-1-1"><p>3D Mapping</p></div>
-            <div class="pure-u-1-1"><p>AI Surgery</p></div>
-            <div class="pure-u-1-1"><p>3D Printed organs</p></div>
+            <div class="pure-u-1-1"><p>Threat Intelligence</p></div>
+            <div class="pure-u-1-1"><p>Vulnerability Management</p></div>
+            <div class="pure-u-1-1"><p>Security Incident Response</p></div>
+            <div class="pure-u-1-1"><p>Data Encryption and Privacy</p></div>
         </div>
         <p class="dates">4/10/2023</p>
 
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
-        <br><br><br><br><br>
+        
+        <div id="posts"></div>
+        
+      
         
         <table class="table-og">
             <thead class="thead-og">
@@ -259,5 +259,70 @@
             </p>
         </footer>
         
+        <script>
+
+            
+            
+    
+    posts = 
+    [
+        {
+            src:"https://picsum.photos/seed/2/320/200",
+            date:new Date("2023-10-02:00:00.000Z"), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
+            title:"How to design a usable landing page",
+            brief:"This article provides valuable insights and tips on creating an engaging and effective landing page that keeps visitors hooked and encourages them to take desired actions.",
+            link:"#",
+            tags:["Design","Coding","HTML"]
+        },
+        {
+            src:"https://picsum.photos/seed/3/320/200",
+            date:new Date("2023-10-05:00:00.000Z"),
+            title:"The Art of Color Theory in Web Design",
+            brief:"Learn how understanding color theory can significantly impact the visual appeal and user experience of your web designs. Discover tips for selecting and combining colors effectively.",
+            link:"#",
+            tags:["Design","Web Development","Color Theory"]
+        },
+        {
+            src:"https://picsum.photos/seed/4/320/200",
+            date:new Date("2023-10-10:00:00.000Z"),
+            title:"Optimizing Website Performance for Speed",
+            brief:"Explore techniques and strategies to enhance your website's performance, ensuring faster loading times and a smoother user experience. Speed matters in today's digital landscape.",
+            link:"#",
+            tags:["Web Development","Performance Optimization"]
+        },
+        {
+            src:"https://picsum.photos/seed/5/320/200",
+            date:new Date("2023-10-15:00:00.000Z"),
+            title:"Creating Engaging User Interfaces: Best Practices",
+            brief:"Delve into the principles and best practices of designing captivating user interfaces that keep users engaged and enhance overall usability. Discover key design elements and strategies.",
+            link:"#",
+            tags:["Design","User Interface","UI/UX"]
+        },
+        {
+            src:"https://picsum.photos/seed/6/320/200",
+            date:new Date("2023-10-20:00:00.000Z"),
+            title:"Mastering Responsive Web Design",
+            brief:"Uncover the essential techniques and tools needed to design websites that look great and function seamlessly across various devices and screen sizes. Responsive design is crucial in today's multi-device world.",
+            link:"#",
+            tags:["Design","Web Development","Responsive Design"]
+        }
+    ]
+
+
+    for (let i = 0; i < posts.length; i++) {
+        
+        var elem = document.createElement("img");
+        elem.setAttribute("src", posts[i].src);
+        elem.setAttribute("date", posts[i].date);
+        elem.setAttribute("title", posts[i].title);
+        elem.setAttribute("brief", posts[i].brief);
+        elem.setAttribute("link", posts[i].link);
+        elem.setAttribute("tags", posts[i].tags);
+        
+        document.getElementById("posts").appendChild(elem);
+}
+    
+    
+      </script>
     </body>         
 </html>
