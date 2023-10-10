@@ -257,6 +257,11 @@ header {
     border-radius: 24px;
 }
 
+#signature-canvas {
+    border: 1px solid #000;
+    background-color: #ccc; /* Gray background for the canvas */
+}
+
 .footers{
     margin:32px;
 }
