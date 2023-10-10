@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html> 
     
-    <!-- html_x-exercise_x   -->
+    <!-- JS_x-exercise_x -->
 
     <head>
 
@@ -24,10 +24,10 @@
         
         <div class="loader"></div>
         <nav id="navbar-header"> 
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
+            <input type="checkbox" class="navbar-checker"/>
+            <span class="navbar-span"></span>
+            <span class="navbar-span"></span>
+            <span class="navbar-span"></span>
             <ul id="navbar-header-list-left">
                 <li><a href="index-ar.html">عربي</a></li> 
                 <li><a href="services.html">Our team</a></li>
@@ -36,6 +36,7 @@
                 <li><a href="order.html">Order</a></li>
                 <li><a href="order.html">Sign up</a></li>
                 <li><a href="services.html">Sign in</a></li>
+                <li><a href="mini-games.html">mini-games</a></li>
             </ul>
         </nav> 
         <!-- Amri Healthcare Cybersolutions -->
@@ -43,11 +44,10 @@
         <br><br><br><br><br>
         <br><br><br><br><br>
 
-        <a href="mini-games.html">mini-games</a>
         <br>
         <input type="text" name="_csrf" hidden>
         <div class="watermarked" class="pure-img">
-        <h2>AHC</h2>
+        <h3>AHC</h3>
         </div>
 
         <p id="headA">At AHC,</p>
@@ -151,10 +151,38 @@
         </div>
         <p class="dates">4/10/2023</p>
 
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <h1>
+            Color Pallete Helper
+        </h1>
+        <form action="#">
+            <label>Select a Mode <select name="mode" id="modes"></select></label>
+            <label> Select a color <input type="color" name="color" id="color"></label>
+        </form>
         
-        <div id="posts"></div>
-        
-      
+        <div>
+            <h3>
+                We suggest you use these colors
+            </h3>
+            <div id="suggested-color">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="suggested-color-hex-code">
+                <div>#778899</div>
+                <div>#778899</div>
+                <div>#778899</div>
+                <div>#778899</div>
+                <div>#778899</div>
+            </div>
+        </div>
+                <br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br>
         
         <table class="table-og">
             <thead class="thead-og">
@@ -260,68 +288,88 @@
         </footer>
         
         <script>
+            const hexToRgb = (hex) => {
+                const r = parseInt(hex.slice(1, 3), 16),
+                    g = parseInt(hex.slice(3, 5), 16),
+                    b = parseInt(hex.slice(5, 7), 16);
+                return [r, g, b];
+            };
 
-            
-            
-    
-    posts = 
-    [
-        {
-            src:"https://picsum.photos/seed/2/320/200",
-            date:new Date("2023-10-02:00:00.000Z"), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
-            title:"How to design a usable landing page",
-            brief:"This article provides valuable insights and tips on creating an engaging and effective landing page that keeps visitors hooked and encourages them to take desired actions.",
-            link:"#",
-            tags:["Design","Coding","HTML"]
-        },
-        {
-            src:"https://picsum.photos/seed/3/320/200",
-            date:new Date("2023-10-05:00:00.000Z"),
-            title:"The Art of Color Theory in Web Design",
-            brief:"Learn how understanding color theory can significantly impact the visual appeal and user experience of your web designs. Discover tips for selecting and combining colors effectively.",
-            link:"#",
-            tags:["Design","Web Development","Color Theory"]
-        },
-        {
-            src:"https://picsum.photos/seed/4/320/200",
-            date:new Date("2023-10-10:00:00.000Z"),
-            title:"Optimizing Website Performance for Speed",
-            brief:"Explore techniques and strategies to enhance your website's performance, ensuring faster loading times and a smoother user experience. Speed matters in today's digital landscape.",
-            link:"#",
-            tags:["Web Development","Performance Optimization"]
-        },
-        {
-            src:"https://picsum.photos/seed/5/320/200",
-            date:new Date("2023-10-15:00:00.000Z"),
-            title:"Creating Engaging User Interfaces: Best Practices",
-            brief:"Delve into the principles and best practices of designing captivating user interfaces that keep users engaged and enhance overall usability. Discover key design elements and strategies.",
-            link:"#",
-            tags:["Design","User Interface","UI/UX"]
-        },
-        {
-            src:"https://picsum.photos/seed/6/320/200",
-            date:new Date("2023-10-20:00:00.000Z"),
-            title:"Mastering Responsive Web Design",
-            brief:"Uncover the essential techniques and tools needed to design websites that look great and function seamlessly across various devices and screen sizes. Responsive design is crucial in today's multi-device world.",
-            link:"#",
-            tags:["Design","Web Development","Responsive Design"]
+            function rgbToHex(rgb) {
+                return `#${rgb.map(c => c.toString(16).padStart(2, '0')).join('')}`;;
+            }
+        
+        //rgb array to css rgb
+        const rgbToCss = (rgb) => {
+            return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+        };
+
+        //fill the mode with options from this list 'http://colormind.io/list/'
+        fetch("http://colormind.io/list/")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                for(mode of data.result){
+                    const option = document.createElement("option")
+                    option.value = mode
+                    option.textContent = mode
+                    document.querySelector("#modes").appendChild(option)
+                }
+            })
+
+        // get selected color
+        document.querySelector("#color").addEventListener("change", function () {
+            callGetColors()
+        })
+
+        // add listener to mode
+        document.querySelector("#modes").addEventListener("change", function () {
+            callGetColors()
+        })
+
+        // call get colors
+        function callGetColors(){
+            const selectedColor = document.querySelector("#color").value
+            console.log(selectedColor)
+
+            //conver hex to rgb array
+            const color_array = hexToRgb(selectedColor)
+
+            //call the api
+            const colors = getColors(color_array);
+            colors.then(data => {
+                console.log(data)
+                //update colors divs
+                const divs = document.querySelectorAll("#suggested-color div")
+                for (let i = 0; i < divs.length; i++) {
+                    divs[i].style.backgroundColor = rgbToCss(data.result[i]);
+                }
+
+                const divs2 = document.querySelectorAll("#suggested-color-hex-code div")
+                for (let i = 0; i < divs2.length; i++) {
+                    divs2[i].textContent = rgbToHex(data.result[i]);
+                }
+
+            })
         }
-    ]
 
+        // call using async/await
+        async function getColors(color_array) {
+            //get mode 
+            const mode = document.querySelector("#modes").value
 
-    for (let i = 0; i < posts.length; i++) {
-        
-        var elem = document.createElement("img");
-        elem.setAttribute("src", posts[i].src);
-        elem.setAttribute("date", posts[i].date);
-        elem.setAttribute("title", posts[i].title);
-        elem.setAttribute("brief", posts[i].brief);
-        elem.setAttribute("link", posts[i].link);
-        elem.setAttribute("tags", posts[i].tags);
-        
-        document.getElementById("posts").appendChild(elem);
-}
-    
+            //call the api
+            const response = await fetch("http://colormind.io/api/", {
+                method: 'POST',
+                body: JSON.stringify({
+                    model: mode,
+                    input: [color_array, "N", "N", "N", "N"]
+                })
+            })
+
+            const data = await response.json()
+            return data
+        }
     
       </script>
     </body>         

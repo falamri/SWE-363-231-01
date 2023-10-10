@@ -140,7 +140,6 @@ header {
 
 
 #navbar-header{
-    margin: 8px;
     position: fixed;
     top:0px;
     background-color: #0F3240;
@@ -152,6 +151,7 @@ header {
 #navbar-header span:first-child {
     transform-origin: 0% 0%; /*sets the origin of the transform property to the top left corner of the element.*/
   }
+  
   #navbar-header span:nth-last-child(2) {
     transform-origin: 0% 100%; /*sets the origin of the transform property to the bottom left corner of the element.*/
   }
@@ -219,6 +219,44 @@ header {
     left:40px;
 }
 
+#suggested-color div{ 
+    width: 100px;
+    height: 100px;
+    border-radius: 24px;
+    display: inline-block;
+    margin: 10px;
+    background-color: lightslategray;
+}
+
+
+#suggested-color{
+    padding: 10px;
+    border-radius: 24px;
+
+    border: 1px solid black;
+    border-bottom: transparent;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    
+}
+
+
+#suggested-color-hex-code div{ 
+    width: 100px;
+    display: inline-block;
+    margin: 12px;
+    color: lightslategray;
+}
+
+#suggested-color-hex-code{
+    border-bottom: 1px solid black;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    padding: 10px;
+    border-radius: 24px;
+}
+
 .footers{
     margin:32px;
 }
@@ -250,33 +288,22 @@ header {
 
 
 .watermarked {
-    height: 200px; /* or whatever, equal to the image you want 'watermarked' */
-    width: 200px; /* as above */
-    background-image: url(path/to/image/to/be/watermarked.png);
+    height: 500px;
+    width: 500px;
+    background-image: url(photos/example2.png);
+    border-radius: 10%;
     background-position: 0 0;
     background-repeat: no-repeat;
     position: relative;
 }
   
-.watermarked {
 
-  
-    background-image: url(photos/example2.png);
-    
-    width: 783.856px;
-    height: 652.953px;
-    float: right;
-    background-repeat: no-repeat;
-    position:relative;
-    
-}
 
-.watermarked h2{
-    color: grey;
-    top: 0; /* or whatever */
-    left: 0; /* or whatever, position according to taste */
-    opacity: 0.7;
-    position: absolute;  
+.watermarked h3{
+    color: rgb(250, 0, 0);
+    top: 0; 
+    margin-left: 24px;
+    opacity: 0.7; 
 }
 
 .dates{
