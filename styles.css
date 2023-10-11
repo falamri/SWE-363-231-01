@@ -262,6 +262,27 @@ header {
     background-color: #ccc; /* Gray background for the canvas */
 }
 
+#screensaver-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: none;
+}
+
+ 
+#screensaver {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 9999;
+  }
+
 .footers{
     margin:32px;
 }

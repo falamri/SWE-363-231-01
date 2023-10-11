@@ -17,6 +17,7 @@
         <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+        <script src="three.js"></script>
 
     </head>
 
@@ -258,8 +259,77 @@
             </p>
         </footer>
         
-        <script>
+        <div id="screensaver"></div>
 
+        <script>
+            var scene, camera, renderer;
+            var shapes = [];
+            var isScreensaverActive = false;
+            var timeout;
+
+            // Initialize Three.js
+            function init() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+                renderer = new THREE.WebGLRenderer();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById("screensaver").appendChild(renderer.domElement);
+
+                // Create and add shapes to the scene
+                createShapes();
+
+                camera.position.z = 5;
+
+                animate();
+            }
+
+            // Create and add shapes to the scene
+            function createShapes() {
+                // Create a PlaneGeometry
+                const planeGeometry = new THREE.PlaneGeometry(4, 4);
+
+                // Create a material
+                const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide });
+
+                // Create a mesh with the geometry and material
+                const plane = new THREE.Mesh(planeGeometry, material);
+                scene.add(plane);
+                shapes.push(plane);
+            }
+
+            // Animate the scene
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Rotate the shapes
+                shapes.forEach(function (shape) {
+                    shape.rotation.x += 0.1;
+                    shape.rotation.y += 0.1;
+                });
+
+                renderer.render(scene, camera);
+            }
+
+            // Event listener for user interaction
+            document.addEventListener("mousemove", function () {
+            clearTimeout(timeout);
+            if (isScreensaverActive) {
+                isScreensaverActive = false;
+                document.getElementById("screensaver").style.display = "none";
+            }
+            timeout = setTimeout(showScreensaver, 60000); // Show screensaver after 1 minute of inactivity
+            });
+
+            // Show the screensaver
+            function showScreensaver() {
+                isScreensaverActive = true;
+                document.getElementById("screensaver").style.display = "block";
+                init();
+            }
+
+            // Start the screensaver
+            showScreensaver();
       </script>
     </body>         
 </html>
