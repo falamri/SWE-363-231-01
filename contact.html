@@ -88,71 +88,110 @@
 
     <script>
 
-const canvas = document.getElementById('signatureCanvas');
-const ctx = canvas.getContext('2d');
-const nameInput = document.getElementById('name');
-const signatureImage = document.getElementById('signatureImage');
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        const nameInput = document.getElementById('name');
+        const signatureImage = document.getElementById('signatureImage');
+
+        class Article {
+            constructor(title, content) {
+                this.title = title;
+                this.content = content;
+            }
+        }
+
+        const articles = [
+            new Article("Article 1", "This is the content of Article 1."),
+            new Article("Article 2", "This is the content of Article 2."),
+            new Article("Article 3", "This is the content of Article 3."),
+        ];
+
+        function populateArticleList() {
+                const articleList = document.getElementById('articleList');
+                articles.forEach((article, index) => {
+                    const articleItem = document.createElement('div');
+                    articleItem.textContent = article.title;
+                    articleItem.addEventListener('click', () => {
+                        // Display the selected article's content
+                        displayArticleContent(article);
+                    });
+                    articleList.appendChild(articleItem);
+                });
+            }
+
+            
+
+            function displayArticleContent(article) {
+                const contentElement = document.getElementById('articleContent');
+                contentElement.innerHTML = `
+                    <h2>${article.title}</h2>
+                    <p>${article.content}</p>
+                `;
+            }
+
+        
+
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
-ctx.fillStyle = 'gray';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
 
 
-let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'black';
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mousemove', draw);
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+
+        function draw(e) {
+            if (!isDrawing) return;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            signatureImage.style.display = 'none';
+            ctx.fillStyle = 'gray'; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function submitForm() {
+            const name = nameInput.value;
+            const imageDataURL = canvas.toDataURL();
+
+            if (!imageDataURL) {
+                alert('Please provide a signature.');
+                return false; 
+            }
+
+            // Display the signature image
+            document.getElementById("canvas-form-Thanks").textContent = "Thanks for submitting!";
+            document.getElementById("canvas-form-name").textContent = "Name: " + name;
+            signatureImage.src = imageDataURL;
+            signatureImage.style.display = 'block';
+
+            // Prevent the default form submission to keep it in this example
+            return false;
+        }
+        populateArticleList();
 
 
-ctx.lineWidth = 2;
-ctx.strokeStyle = 'black';
-
-canvas.addEventListener('mousedown', (e) => {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-});
-
-canvas.addEventListener('mousemove', draw);
-
-canvas.addEventListener('mouseup', () => {
-    isDrawing = false;
-});
-
-function draw(e) {
-    if (!isDrawing) return;
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-}
-
-function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    signatureImage.style.display = 'none';
-    ctx.fillStyle = 'gray'; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-function submitForm() {
-    const name = nameInput.value;
-    const imageDataURL = canvas.toDataURL();
-
-    if (!imageDataURL) {
-        alert('Please provide a signature.');
-        return false; 
-    }
-
-    // Display the signature image
-    document.getElementById("canvas-form-Thanks").textContent = "Thanks for submitting!";
-    document.getElementById("canvas-form-name").textContent = "Name: " + name;
-    signatureImage.src = imageDataURL;
-    signatureImage.style.display = 'block';
-
-    // Prevent the default form submission to keep it in this example
-    return false;
-}
-
-  </script>
+    </script>
 
 </body>
 </html>

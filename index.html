@@ -262,10 +262,28 @@
         <div id="screensaver"></div>
 
         <script>
+
+            class WebsiteObject {
+                constructor(title, description) {
+                this.title = title;
+                this.description = description;
+                }
+            }
+
+            // Create a list of objects
+            const objectsList = [
+                new WebsiteObject("AHC", "Our mission is to safeguard the digital integrity of healthcare organizations."),
+                new WebsiteObject("State of the art treatment", "Threat Intelligence, Vulnerability Management, Security Incident Response, Data Encryption and Privacy"),
+                new WebsiteObject("Package A", "This is package A and it is for $1.5"),
+                // Add more objects as needed
+            ];
+
             var scene, camera, renderer;
             var shapes = [];
             var isScreensaverActive = false;
             var timeout;
+
+
 
             // Initialize Three.js
             function init() {
