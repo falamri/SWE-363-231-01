@@ -263,30 +263,28 @@
 
         <script>
 
-            class WebsiteObject {
-                constructor(title, description) {
-                this.title = title;
-                this.description = description;
-                }
-            }
+const WebsiteObject = function (title, description) {
+            this.title = title;
+            this.description = description;
+        };
 
-            // Create a list of objects
-            const objectsList = [
-                new WebsiteObject("AHC", "Our mission is to safeguard the digital integrity of healthcare organizations."),
-                new WebsiteObject("State of the art treatment", "Threat Intelligence, Vulnerability Management, Security Incident Response, Data Encryption and Privacy"),
-                new WebsiteObject("Package A", "This is package A and it is for $1.5"),
-                // Add more objects as needed
-            ];
+        // Create a list of objects
+        const objectsList = [
+            new WebsiteObject("AHC", "Our mission is to safeguard the digital integrity of healthcare organizations."),
+            new WebsiteObject("State of the art treatment", "Threat Intelligence, Vulnerability Management, Security Incident Response, Data Encryption and Privacy"),
+            new WebsiteObject("Package A", "This is package A and it is for $1.5"),
+            // Add more objects as needed
+        ];
 
-            var scene, camera, renderer;
-            var shapes = [];
-            var isScreensaverActive = false;
-            var timeout;
-
-
+        // IIFE to initialize Three.js
+        (function () {
+            let scene, camera, renderer;
+            const shapes = [];
+            let isScreensaverActive = false;
+            let timeout;
 
             // Initialize Three.js
-            function init() {
+            const init = () => {
                 scene = new THREE.Scene();
                 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -300,10 +298,10 @@
                 camera.position.z = 5;
 
                 animate();
-            }
+            };
 
             // Create and add shapes to the scene
-            function createShapes() {
+            const createShapes = () => {
                 // Create a PlaneGeometry
                 const planeGeometry = new THREE.PlaneGeometry(4, 4);
 
@@ -314,40 +312,41 @@
                 const plane = new THREE.Mesh(planeGeometry, material);
                 scene.add(plane);
                 shapes.push(plane);
-            }
+            };
 
             // Animate the scene
-            function animate() {
+            const animate = () => {
                 requestAnimationFrame(animate);
 
                 // Rotate the shapes
-                shapes.forEach(function (shape) {
+                shapes.forEach((shape) => {
                     shape.rotation.x += 0.1;
                     shape.rotation.y += 0.1;
                 });
 
                 renderer.render(scene, camera);
-            }
+            };
 
             // Event listener for user interaction
-            document.addEventListener("mousemove", function () {
-            clearTimeout(timeout);
-            if (isScreensaverActive) {
-                isScreensaverActive = false;
-                document.getElementById("screensaver").style.display = "none";
-            }
-            timeout = setTimeout(showScreensaver, 60000); // Show screensaver after 1 minute of inactivity
+            document.addEventListener("mousemove", () => {
+                clearTimeout(timeout);
+                if (isScreensaverActive) {
+                    isScreensaverActive = false;
+                    document.getElementById("screensaver").style.display = "none";
+                }
+                timeout = setTimeout(showScreensaver, 60000); // Show screensaver after 1 minute of inactivity
             });
 
             // Show the screensaver
-            function showScreensaver() {
+            const showScreensaver = () => {
                 isScreensaverActive = true;
                 document.getElementById("screensaver").style.display = "block";
                 init();
-            }
+            };
 
             // Start the screensaver
             showScreensaver();
+        })();
       </script>
     </body>         
 </html>
