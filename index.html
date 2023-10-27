@@ -269,13 +269,17 @@ const WebsiteObject = function (title, description) {
         };
 
         // Create a list of objects
-        const objectsList = [
-            new WebsiteObject("AHC", "Our mission is to safeguard the digital integrity of healthcare organizations."),
-            new WebsiteObject("State of the art treatment", "Threat Intelligence, Vulnerability Management, Security Incident Response, Data Encryption and Privacy"),
-            new WebsiteObject("Package A", "This is package A and it is for $1.5"),
-            // Add more objects as needed
-        ];
+        const objectsListData = [
+    { title: "AHC", description: "Our mission is to safeguard the digital integrity of healthcare organizations." },
+    { title: "State of the art treatment", description: "Threat Intelligence, Vulnerability Management, Security Incident Response, Data Encryption and Privacy" },
+    { title: "Package A", description: "This is package A and it is for $1.5" },
+    
+];
 
+const objectsList = objectsListData.map(item => new WebsiteObject(item.title, item.description));
+
+
+const shapes = [];
         // IIFE to initialize Three.js
         (function () {
             let scene, camera, renderer;
@@ -316,16 +320,16 @@ const WebsiteObject = function (title, description) {
 
             // Animate the scene
             const animate = () => {
-                requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-                // Rotate the shapes
-                shapes.forEach((shape) => {
-                    shape.rotation.x += 0.1;
-                    shape.rotation.y += 0.1;
-                });
+    // Rotate the shapes
+    shapes.forEach(shape => {
+        shape.rotation.x += 0.1;
+        shape.rotation.y += 0.1;
+    });
 
-                renderer.render(scene, camera);
-            };
+    renderer.render(scene, camera);
+};
 
             // Event listener for user interaction
             document.addEventListener("mousemove", () => {

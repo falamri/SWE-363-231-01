@@ -97,6 +97,12 @@
 
         const ticTacToeGame = new TicTacToeGame();
 
+        // Generate the board cells using map and join
+        const board = document.getElementById("board");
+        board.innerHTML = ticTacToeGame.gameState
+            .map((_, index) => `<div class="cell" tabindex="-1" onclick="makeMove(${index})"></div>`)
+            .join("");
+
         const makeMove = (cellIndex) => {
             if (ticTacToeGame.gameActive && ticTacToeGame.gameState[cellIndex] === "") {
                 ticTacToeGame.gameState[cellIndex] = ticTacToeGame.currentPlayer;
