@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
         <script src="three.js"></script>
+        
 
     </head>
 
@@ -263,94 +264,94 @@
 
         <script>
 
-const WebsiteObject = function (title, description) {
-            this.title = title;
-            this.description = description;
-        };
+            const WebsiteObject = function (title, description) {
+                        this.title = title;
+                        this.description = description;
+                    };
 
-        // Create a list of objects
-        const objectsListData = [
-    { title: "AHC", description: "Our mission is to safeguard the digital integrity of healthcare organizations." },
-    { title: "State of the art treatment", description: "Threat Intelligence, Vulnerability Management, Security Incident Response, Data Encryption and Privacy" },
-    { title: "Package A", description: "This is package A and it is for $1.5" },
-    
-];
+                    // Create a list of objects
+                    const objectsListData = [
+                { title: "AHC", description: "Our mission is to safeguard the digital integrity of healthcare organizations." },
+                { title: "State of the art treatment", description: "Threat Intelligence, Vulnerability Management, Security Incident Response, Data Encryption and Privacy" },
+                { title: "Package A", description: "This is package A and it is for $1.5" },
+                
+            ];
 
-const objectsList = objectsListData.map(item => new WebsiteObject(item.title, item.description));
+            const objectsList = objectsListData.map(item => new WebsiteObject(item.title, item.description));
 
 
-const shapes = [];
-        // IIFE to initialize Three.js
-        (function () {
-            let scene, camera, renderer;
             const shapes = [];
-            let isScreensaverActive = false;
-            let timeout;
+            // IIFE to initialize Three.js
+            (function () {
+                let scene, camera, renderer;
+                const shapes = [];
+                let isScreensaverActive = false;
+                let timeout;
 
-            // Initialize Three.js
-            const init = () => {
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                // Initialize Three.js
+                const init = () => {
+                    scene = new THREE.Scene();
+                    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-                renderer = new THREE.WebGLRenderer();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                document.getElementById("screensaver").appendChild(renderer.domElement);
+                    renderer = new THREE.WebGLRenderer();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    document.getElementById("screensaver").appendChild(renderer.domElement);
+
+                    // Create and add shapes to the scene
+                    createShapes();
+
+                    camera.position.z = 5;
+
+                    animate();
+                };
 
                 // Create and add shapes to the scene
-                createShapes();
+                const createShapes = () => {
+                    // Create a PlaneGeometry
+                    const planeGeometry = new THREE.PlaneGeometry(4, 4);
 
-                camera.position.z = 5;
+                    // Create a material
+                    const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide });
 
-                animate();
-            };
+                    // Create a mesh with the geometry and material
+                    const plane = new THREE.Mesh(planeGeometry, material);
+                    scene.add(plane);
+                    shapes.push(plane);
+                };
 
-            // Create and add shapes to the scene
-            const createShapes = () => {
-                // Create a PlaneGeometry
-                const planeGeometry = new THREE.PlaneGeometry(4, 4);
+                // Animate the scene
+                const animate = () => {
+                    requestAnimationFrame(animate);
 
-                // Create a material
-                const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, side: THREE.DoubleSide });
+                    // Rotate the shapes
+                    shapes.forEach(shape => {
+                        shape.rotation.x += 0.1;
+                        shape.rotation.y += 0.1;
+                    });
 
-                // Create a mesh with the geometry and material
-                const plane = new THREE.Mesh(planeGeometry, material);
-                scene.add(plane);
-                shapes.push(plane);
-            };
+                    renderer.render(scene, camera);
+                };
 
-            // Animate the scene
-            const animate = () => {
-    requestAnimationFrame(animate);
+                // Event listener for user interaction
+                document.addEventListener("mousemove", () => {
+                    clearTimeout(timeout);
+                    if (isScreensaverActive) {
+                        isScreensaverActive = false;
+                        document.getElementById("screensaver").style.display = "none";
+                    }
+                    timeout = setTimeout(showScreensaver, 60000); // Show screensaver after 1 minute of inactivity
+                });
 
-    // Rotate the shapes
-    shapes.forEach(shape => {
-        shape.rotation.x += 0.1;
-        shape.rotation.y += 0.1;
-    });
+                // Show the screensaver
+                const showScreensaver = () => {
+                    isScreensaverActive = true;
+                    document.getElementById("screensaver").style.display = "block";
+                    init();
+                };
 
-    renderer.render(scene, camera);
-};
-
-            // Event listener for user interaction
-            document.addEventListener("mousemove", () => {
-                clearTimeout(timeout);
-                if (isScreensaverActive) {
-                    isScreensaverActive = false;
-                    document.getElementById("screensaver").style.display = "none";
-                }
-                timeout = setTimeout(showScreensaver, 60000); // Show screensaver after 1 minute of inactivity
-            });
-
-            // Show the screensaver
-            const showScreensaver = () => {
-                isScreensaverActive = true;
-                document.getElementById("screensaver").style.display = "block";
-                init();
-            };
-
-            // Start the screensaver
-            showScreensaver();
-        })();
+                // Start the screensaver
+                showScreensaver();
+            })();
       </script>
     </body>         
 </html>

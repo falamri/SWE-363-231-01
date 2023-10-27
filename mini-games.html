@@ -12,6 +12,11 @@
     <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+
+    
     <style>
         body {
             display: flex;
@@ -58,6 +63,7 @@
     </style>
 </head>
 <body>
+    <div id="root"></div>
     <div id="container">
         <h1 id="heading">Tic Tac Toe</h1>
         <p id="subheading1">For Keyboard:</p>
@@ -77,6 +83,25 @@
         </div>
         <button onclick="resetGame()">Reset</button>
     </div>
+
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        function Greeting() {
+            return <h1>Hello, React!</h1>;
+        }
+
+        // Rendering the component into the "root" element
+        ReactDOM.render(<Greeting />, document.getElementById('root'));
+
+        </script>
+        <script>
+            const WebsiteObject = function (title, description) {
+                        this.title = title;
+                        this.description = description;
+            };
+    </script>
+
+
     <script>
         const TicTacToeGame = function() {
             this.currentPlayer = "X";
@@ -96,12 +121,6 @@
         };
 
         const ticTacToeGame = new TicTacToeGame();
-
-        // Generate the board cells using map and join
-        const board = document.getElementById("board");
-        board.innerHTML = ticTacToeGame.gameState
-            .map((_, index) => `<div class="cell" tabindex="-1" onclick="makeMove(${index})"></div>`)
-            .join("");
 
         const makeMove = (cellIndex) => {
             if (ticTacToeGame.gameActive && ticTacToeGame.gameState[cellIndex] === "") {
