@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="SWE Exercises">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Fahad Alamri">
+
+    <title>Order Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark_theme.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
+</head>
+
+<body>
+    
+    <header> <h1>Fill out the Following Form to Order</h1></header>
+
+    <form class="pure-form pure-form-stacked">
+        <fieldset>
+
+            <legend></legend>
+
+            <div class="order pure-g1">
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-first-name">First Name</label>
+                    <input type="text" id="multi-first-name" class="pure-u-1-2" required/>
+                </div>
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-last-name">Last Name</label>
+                    <input type="text" id="multi-last-name" class="pure-u-1-2" required/>
+                </div>
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-email">E-Mail</label>
+                    <input type="email" id="multi-email" class="pure-u-1-2" placeholder="example@organization.example" required/>
+                </div>
+                
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-city">Phone Number</label>
+                    <input type="tel" id="multi-phone" required class="pure-u-1-2" placeholder="+966 512345678" pattern="+[0-9] {12}">
+                </div>
+            
+                <datalist class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-who">Entity</label>
+                    <select id="multi-who" class="pure-input-1-2">
+                        <option>Myself</option>
+                        <option>A private hospital</option>
+                        <option>A public hospital</option>
+                        <option>private Healthcare organization</option>
+                        <option>public Healthcare organization</option>
+                    </select>
+                </datalist>
+
+                <datalist class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-package">Package</label>
+                    <select id="multi-package" class="pure-input-1-2">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </datalist>
+
+            </div>
+
+            <div>
+                <label for="multi-terms" class="pure-checkbox">
+                    <input type="checkbox" id="multi-terms" required/> I've read the terms and conditions
+                </label>
+            
+                <button type="submit" class="submit-button pure-button-primary" onclick="location.href='orderConf.html';">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+
+</body>
+</html>

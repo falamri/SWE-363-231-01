@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <meta name="description" content="SWE Exercises">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Fahad Alamri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark_theme.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            text-align: center;
+        }
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            width: 300px;
+            margin-bottom: 16px;
+        }
+        .cell {
+            background-color: beige;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        .cell.X {
+            background-color: #ff3333;
+        }
+        .cell.O {
+            background-color: #33cc33;
+        }
+        button {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .turn {
+            font-weight: bold;
+        }
+        .current-cell {
+            background-color: #aaf;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <div id="container">
+        <h1 id="heading">Tic Tac Toe</h1>
+        <p id="subheading1">For Keyboard:</p>
+        <p id="subheading2">Arrows & Enter key to play</p>
+        <p>Press R to restart.</p>
+        <p id="turn">Player X's Turn</p>
+        <div id="board" tabindex="0">
+            <div class="cell" tabindex="-1" onclick="makeMove(0)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(1)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(2)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(3)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(4)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(5)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(6)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(7)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(8)"></div>
+        </div>
+        <button onclick="resetGame()">Reset</button>
+    </div>
+
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+        function Greeting() {
+            return <h1>Hello, React!</h1>;
+        }
+
+        // Rendering the component into the "root" element
+        ReactDOM.render(<Greeting />, document.getElementById('root'));
+
+        </script>
+        <script>
+            const WebsiteObject = function (title, description) {
+                        this.title = title;
+                        this.description = description;
+            };
+    </script>
+
+
+    <script>
+        const TicTacToeGame = function() {
+            this.currentPlayer = "X";
+            this.gameActive = true;
+            this.gameState = ["", "", "", "", "", "", "", "", ""];
+            this.currentCellIndex = 0;
+            this.winningCombinations = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+        };
+
+        const ticTacToeGame = new TicTacToeGame();
+
+        const makeMove = (cellIndex) => {
+            if (ticTacToeGame.gameActive && ticTacToeGame.gameState[cellIndex] === "") {
+                ticTacToeGame.gameState[cellIndex] = ticTacToeGame.currentPlayer;
+                const cellElement = document.getElementsByClassName("cell")[cellIndex];
+                cellElement.innerText = ticTacToeGame.currentPlayer;
+                cellElement.classList.add(ticTacToeGame.currentPlayer);
+                if (checkWin()) {
+                    handleGameResult("Player " + ticTacToeGame.currentPlayer + " wins!");
+                } else if (checkDraw()) {
+                    handleGameResult("It's a draw!");
+                } else {
+                    switchPlayer();
+                }
+            }
+        };
+
+        const checkWin = () => {
+            for (const combination of ticTacToeGame.winningCombinations) {
+                const [a, b, c] = combination;
+                if (ticTacToeGame.gameState[a] &&
+                    ticTacToeGame.gameState[a] === ticTacToeGame.gameState[b] &&
+                    ticTacToeGame.gameState[a] === ticTacToeGame.gameState[c]) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        const checkDraw = () => {
+            return ticTacToeGame.gameState.indexOf("") === -1;
+        };
+
+        const switchPlayer = () => {
+            ticTacToeGame.currentPlayer = ticTacToeGame.currentPlayer === "X" ? "O" : "X";
+            document.getElementById("board").classList.remove("player-x", "player-o");
+            document.getElementById("board").classList.add("player-" + ticTacToeGame.currentPlayer.toLowerCase());
+            document.getElementById("turn").innerText = "Player " + ticTacToeGame.currentPlayer + "'s Turn";
+            ticTacToeGame.currentCellIndex = cellIndex;
+            document.getElementById("board").focus();
+            updateCurrentCellHighlight();
+        };
+
+        const handleGameResult = (resultMessage) => {
+            document.getElementById("board").classList.add("game-over");
+            document.getElementById("heading").innerHTML = resultMessage;
+            document.getElementById("turn").innerHTML = "";
+            document.getElementById("subheading1").innerHTML = "For Keyboard:";
+            document.getElementById("subheading2").innerHTML = "Arrows & Enter key to play";
+            ticTacToeGame.gameActive = false;
+        };
+
+        const resetGame = () => {
+            ticTacToeGame.currentPlayer = "X";
+            ticTacToeGame.gameActive = true;
+            ticTacToeGame.gameState = ["", "", "", "", "", "", "", "", ""];
+            ticTacToeGame.currentCellIndex = 0;
+            document.getElementById("heading").innerHTML = "Tic Tac Toe";
+            document.getElementById("board").classList.remove("player-x", "player-o", "game-over");
+            document.getElementById("turn").innerText = "Player " + ticTacToeGame.currentPlayer + "'s Turn";
+            resetCells();
+            document.getElementsByClassName("cell")[ticTacToeGame.currentCellIndex].setAttribute("tabindex", "0");
+            document.getElementById("board").focus();
+            updateCurrentCellHighlight();
+        };
+
+        const resetCells = () => {
+            const cells = document.getElementsByClassName("cell");
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].innerText = "";
+                cells[i].classList.remove("X", "O");
+            }
+        };
+
+        const updateCurrentCellHighlight = () => {
+            const cells = document.getElementsByClassName("cell");
+            for (let i = 0; i < cells.length; i++) {
+                if (i === ticTacToeGame.currentCellIndex) {
+                    cells[i].classList.add("current-cell");
+                } else {
+                    cells[i].classList.remove("current-cell");
+                }
+            }
+        };
+
+        document.addEventListener("keydown", (event) => {
+            const key = event.key;
+            if (key === "ArrowUp" && ticTacToeGame.currentCellIndex >= 3) {
+                ticTacToeGame.currentCellIndex -= 3;
+            } else if (key === "ArrowDown" && ticTacToeGame.currentCellIndex <= 5) {
+                ticTacToeGame.currentCellIndex += 3;
+            } else if (key === "ArrowLeft" && ticTacToeGame.currentCellIndex % 3 !== 0) {
+                ticTacToeGame.currentCellIndex -= 1;
+            } else if (key === "ArrowRight" && ticTacToeGame.currentCellIndex % 3 !== 2) {
+                ticTacToeGame.currentCellIndex += 1;
+            } else if (key === "Enter" || key === " ") {
+                makeMove(ticTacToeGame.currentCellIndex);
+            } else if (key === "r") {
+                resetGame();
+            }
+            updateCurrentCellHighlight();
+        });
+
+        resetGame();
+    </script>
+</body>
+</html>

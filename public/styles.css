@@ -1,0 +1,610 @@
+/* css_x-exercise_x */
+
+.td-og{
+    border-radius: 10px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.td-og:hover {
+    background-color: #D6EEEE;
+}
+
+th{
+    text-transform: uppercase; 
+}
+
+.top {
+    background-color: rgb(122, 28, 223);
+}
+
+.pure-table{
+    text-align: center;
+    background-color: #171B29;
+    margin: auto;
+}
+
+.s-caption{
+    color: #171B29;
+}
+
+em {
+    color:#a200fa;
+}
+
+#the_most_important {
+    text-transform:uppercase;
+    color:#faa000;
+}
+
+.table-og{
+    border-spacing: 10px;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    table-layout:fixed;
+}
+
+.tr-og{
+    background-color: #cccccc;
+}
+
+.tr-og:nth-child(odd){
+    background-color: #3fb2e0;
+}
+
+::selection {
+    background-color: #ff4800;
+}
+
+a:hover {
+    cursor:pointer;
+}
+
+h1, h2, h3, h4, h5, h6{
+    text-transform: uppercase;
+
+}
+
+h2 {
+    font-family: sans-serif;    
+    border-bottom:1px solid #3e4749;
+}
+  
+h2+p:first-letter {
+    font-size:x-large;
+}
+  
+input {
+    height:20px;
+}
+
+input:not([type="submit"]){
+    border: 2px solid gray;
+}
+  
+input[name="message"]{
+    height:50px;
+}
+
+img {
+    display: block;
+}
+
+a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li:first-child {
+    text-decoration: underline;
+    color:#3e4749;
+}
+
+a:link {
+    color: green;
+}
+
+a:visited{
+    color: green;
+}
+
+footer {
+    font-family: sans-serif;
+}
+
+/* at AHC... */
+header {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* ul */
+
+
+#navbar-header{
+    position: fixed;
+    top:0px;
+    background-color: #0F3240;
+    display: block;
+    width: 100%;
+    z-index: 1;
+}
+
+#navbar-header span:first-child {
+    transform-origin: 0% 0%; /*sets the origin of the transform property to the top left corner of the element.*/
+  }
+  
+  #navbar-header span:nth-last-child(2) {
+    transform-origin: 0% 100%; /*sets the origin of the transform property to the bottom left corner of the element.*/
+  }
+  #navbar-header input:checked ~ span {/* selects all span elements that come after an input element that is checked inside the #menuToggle element. */
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+  }
+  #navbar-header input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
+#navbar-header input:checked ~ span:nth-last-child(3) { /* selects the third span element from the end that comes after an input element that is checked inside the #menuToggle element. */
+    opacity: 0; /* sets the opacity of the element to 0, making it invisible. */
+    transform: rotate(0deg) scale(0.2, 0.2); /* applies a rotation of 0 degrees and a scale of 0.2 to the element, making it very small and invisible.*/
+  }
+
+#navbar-header input {
+    position: absolute;
+    width:40px;
+    cursor:pointer;
+    opacity: 0; 
+    z-index: 2; /* in order to place the checkbox over the hamburguer */
+    -webkit-touch-callout: none;
+  }
+
+#navbar-header span {
+    display: block; /* to ensure that each span element occupies its own line. */
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px; /* create some spacing between the span elements. */
+    position: relative; /* allow for positioning changes in relation to the parent div.*/
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1; /* ensure that the span element is under the checkbox */
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+    transform-origin: 4px 0px; /* set to 4px 0px to specify the center of rotation for the transform property above. */
+
+  }
+
+#navbar-header-list-left {
+    position: absolute; /* allow us to position the menu on top of the rest of the content. */
+    left: -300px;/* This property moves the menu outisde of the viewport*/
+    top: 80px; /*This property sets the distance between the top edge of the menu and the top edge of the #menuToggle div.*/
+    width: 200px; 
+    margin: -100px 0 0 -50px;/* The negative margin values are used to move the menu up and to the left to center it vertically and horizontally within the #menuToggle div. */
+    padding: 50px;
+    padding-top: 125px;
+    background: #ededed;
+    list-style-type: none; /* removes the default bullet points of the list. */
+    -webkit-font-smoothing: antialiased; /*This property sets the font smoothing for webkit browsers. */
+    
+    transition: left 0.5s; /* This property sets the transition effect for the left property. This will create a smooth animation when the menu slides in from the left.*/
+  }
+  
+#navbar-header-list-left li a {
+    color: purple;
+    display: block;
+    padding: 10px 0;
+    font-size: 22px;
+  }
+
+#navbar-header input:checked ~ ul {
+    left:40px;
+}
+
+#suggested-color div{ 
+    width: 100px;
+    height: 100px;
+    border-radius: 24px;
+    display: inline-block;
+    margin: 10px;
+    background-color: lightslategray;
+}
+
+
+#suggested-color{
+    padding: 10px;
+    border-radius: 24px;
+
+    border: 1px solid black;
+    border-bottom: transparent;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    
+}
+
+
+#suggested-color-hex-code div{ 
+    width: 100px;
+    display: inline-block;
+    margin: 12px;
+    color: lightslategray;
+}
+
+#suggested-color-hex-code{
+    border-bottom: 1px solid black;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    padding: 10px;
+    border-radius: 24px;
+}
+
+#signature-canvas {
+    border: 1px solid #000;
+    background-color: #ccc; /* Gray background for the canvas */
+}
+
+#screensaver-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: none;
+}
+
+ 
+#screensaver {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 9999;
+  }
+
+.footers{
+    margin:32px;
+}
+
+.footers a{
+    display: block;
+    text-align: center;
+    font-size: 0.875em;
+    margin-bottom: 14px;
+    text-decoration: none;
+    color: #1A1A1A;
+}
+
+/*  */
+#headA{
+    background: linear-gradient(to right, #2B3087, #00B4EC);
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 16px;
+    font-family: Century Gothic;
+    font-weight: 700;
+    line-height: 24px;
+    word-wrap: break-word;
+    font-style: normal;
+
+}
+
+
+.watermarked {
+    height: 500px;
+    width: 500px;
+    background-image: url(photos/example2.png);
+    border-radius: 10%;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    position: relative;
+}
+  
+
+
+.watermarked h3{
+    color: rgb(250, 0, 0);
+    top: 0; 
+    margin-left: 24px;
+    opacity: 0.7; 
+}
+
+.dates{
+    float: right;
+    color: rgb(252, 75, 252);
+    text-decoration: underline;
+
+
+}
+
+#headAbody1{
+    color: #FFF;
+    font-family: Century Gothic;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px; /* 111.111% */
+    letter-spacing: -0.72px;
+}
+
+.headbody{
+    width: 335px;
+    color: #DDE2FF;
+    font-family: Century Gothic;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+    opacity: 0.6;
+}
+
+#button-bodyA{
+    background: #22A75D;
+    width: 147px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 52px;
+    box-shadow: 0px 15px 25px 0px rgba(34, 167, 93, 0.25);
+}
+
+#button-bodyA:hover{
+    background-color: #00B4EC;
+    transition: 0.5s;
+    flex-shrink: 0;
+    border-radius: 52px;
+    box-shadow:  0px 5px 15px 0px rgb(25, 164, 195);
+}
+
+#button-bodyA:focus{
+    outline-color: transparent;
+    outline-style:solid;
+}
+
+.submit-button{
+    width: 147px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 52px;
+    box-shadow: 0px 15px 25px 0px #012840;
+    min-width: 120px;
+    min-height: 30px;
+}
+
+.submit-button:hover{
+    background-color: #5f5f5f;
+    transition: 0.2s;
+    box-shadow: 0px 0px 5px 0px rgb(65, 79, 82);
+}
+
+.submit-button:focus{
+    outline-color: transparent;
+    outline-style:solid;
+}
+
+.info-shape-1{
+    width: 335px;
+    height: 420px;
+    flex-shrink: 0;
+    background: #171B29;
+}
+
+.info-shape-2{
+    width: 335px;
+    height: 420px;
+    flex-shrink: 0;
+    background: #171B29;
+}
+
+.info-text{
+    color: #FFF;
+    font-family: Century Gothic;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 192.857% */
+}
+
+#info-users{
+    color: #2278D4;
+    font-family: Century Gothic;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+    text-decoration-line: underline;
+}
+
+#info-shareholders{
+    color: #22A75D;
+    font-family: Century Gothic;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+    text-decoration-line: underline;
+}
+
+.info-footer{ 
+    font-size: 14px; 
+    font-family: Century Gothic; 
+    font-weight: 700; 
+    text-decoration: underline; 
+    word-wrap: break-word;
+}
+
+#info-user-footer{
+    color: #2278D4;
+}
+
+#info-user-footer1{
+    color: #2278D4;
+}
+
+#info-shareholder-footer{
+    color: #22A75D;
+}
+
+#info-shareholder-footer1{
+    color: #22A75D;
+}
+
+.different{
+    width: 375px;
+    height: 946px;
+    flex-shrink: 0;
+    background: #FFF;
+}
+
+.dif-header{
+    color: #0F1320;
+    font-family: Century Gothic;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+    text-align: center;
+}
+
+.dif-body{
+ 
+    width: 335px;
+    color: #0F1320;
+    font-family: Century Gothic;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 171.429% */
+    opacity: 0.6;
+}
+
+.pure-g{
+    background: rgb(250, 250, 250);
+    margin: 2vw auto;            
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    text-align: center;	
+}
+
+.pure-u-1-1{
+    color: #00B4EC;
+    border: #22A75D;
+    border-radius: 2px;
+    background: #171B29;
+    border: 1px solid #ddd;
+}
+
+.features{
+    color: #FFF;
+    font-family: Century Gothic;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 150% */
+}
+
+.package-caption{
+    color: #FFF;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+}
+
+.package-headers{
+    color: #191B21;
+    font-family: Century Gothic;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 168.75% */
+}
+
+/* nav */
+.navbar-footer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+
+}
+
+/* ul */
+.navbar-footer-list{
+    width: 25%;
+    display: flex;
+}
+
+.navbar-footer-list li{
+    list-style: none;
+    padding: 20px 20px;
+}
+
+.navbar-footer-list li a{
+    text-decoration: none;
+    color: white;
+}
+
+.loader {
+    border-top: 8px solid #0F3240;
+    border-right: 8px solid white;
+    border-bottom: 8px solid #0F3240;
+    border-left: 8px solid white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border-radius: 50%;
+    animation: opacityOnAndOff 2s normal forwards;
+  }
+
+  @keyframes opacityOnAndOff {
+    0% {
+        opacity: 0;
+        -webkit-transform: rotate(0deg);
+    }
+    50%{
+      opacity: 1;
+      -webkit-transform: rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: rotate(360deg);
+    }
+
+}
+
+body *:not(.loader) {
+    animation: cssAnimation 0s 2s forwards;
+    visibility: hidden;
+  }
+  
+  @keyframes cssAnimation {
+    to   { visibility: visible; }
+  }

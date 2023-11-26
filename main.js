@@ -1,7 +1,7 @@
 
 // BE_x-exercise_x
 
-const customEmitter = require('./customEmitter');
+const customEmitter = require('./public/customEmitter');
 
 function generateRandomNumber(min, max) {
   return Math.random() * (max - min) + min;

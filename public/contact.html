@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta name="description" content="SWE Exercises">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Fahad Alamri">
+
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark_theme.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
+</head>
+
+<body>
+
+    <h1>
+        Contact Us!
+    </h1>
+
+    <p>
+        <ul>
+            <li><a href="mailto:s202039420@kfupm.edu.sa"> Email </a></li>
+            <li><a href="tel:+966 123456789">Phone </a></li>
+   
+        </ul>
+    </p>
+    
+    <p>
+        <form action="mailto:s202039420@kfupm.edu.sa" method="get" class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="aligned-name">Name</label>
+                    <input type="text" id="aligned-name" required/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="aligned-email">Email Address</label>
+                    <input type="email" id="aligned-email" placeholder="example@example.sa" required/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="aligned-subject"></label>
+                    <input type="text" name="subject" placeholder="subject" required/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="aligned-textbox"></label>
+                    <textarea class="pure-input-1-2" placeholder="Your message"></textarea>
+                </div>
+
+                <div class="pure-controls">
+                    <label for="aligned-cb" class="pure-checkbox">
+                        <input type="checkbox" id="aligned-cb" required/> I've read the terms and conditions
+                    </label>
+                
+                    <label for="aligned-cb" class="pure-checkbox">
+                        <input type="checkbox" id="aligned-cb" /> Send me promotions about AHC products
+                    </label>
+                
+                    <button type="submit" class="submit-button pure-button-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </p>
+
+    <h1>Signature Form</h1>
+    <form id="signatureForm" onsubmit="return submitForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <canvas id="signatureCanvas" width="400" height="200"></canvas>
+
+        <button type="button" id="clearSignature" onclick="clearCanvas()">Clear Signature</button>
+        <input type="submit" value="Submit Signature">
+    </form>
+    <div id="canvas-form-Thanks"></div>
+    <div id="canvas-form-name"></div>
+    <img id="signatureImage" style="display: none;">
+    
+    
+
+    <script>
+
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        const nameInput = document.getElementById('name');
+        const signatureImage = document.getElementById('signatureImage');
+
+        class Article {
+            constructor(title, content) {
+                this.title = title;
+                this.content = content;
+            }
+        }
+
+        const articles = [
+            new Article("Article 1", "This is the content of Article 1."),
+            new Article("Article 2", "This is the content of Article 2."),
+            new Article("Article 3", "This is the content of Article 3."),
+        ];
+
+        function populateArticleList() {
+                const articleList = document.getElementById('articleList');
+                articles.forEach((article, index) => {
+                    const articleItem = document.createElement('div');
+                    articleItem.textContent = article.title;
+                    articleItem.addEventListener('click', () => {
+                        // Display the selected article's content
+                        displayArticleContent(article);
+                    });
+                    articleList.appendChild(articleItem);
+                });
+            }
+
+            
+
+            function displayArticleContent(article) {
+                const contentElement = document.getElementById('articleContent');
+                contentElement.innerHTML = `
+                    <h2>${article.title}</h2>
+                    <p>${article.content}</p>
+                `;
+            }
+
+        
+
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'black';
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mousemove', draw);
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+
+        function draw(e) {
+            if (!isDrawing) return;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            signatureImage.style.display = 'none';
+            ctx.fillStyle = 'gray'; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function submitForm() {
+            const name = nameInput.value;
+            const imageDataURL = canvas.toDataURL();
+
+            if (!imageDataURL) {
+                alert('Please provide a signature.');
+                return false; 
+            }
+
+            // Display the signature image
+            document.getElementById("canvas-form-Thanks").textContent = "Thanks for submitting!";
+            document.getElementById("canvas-form-name").textContent = "Name: " + name;
+            signatureImage.src = imageDataURL;
+            signatureImage.style.display = 'block';
+
+            // Prevent the default form submission to keep it in this example
+            return false;
+        }
+        populateArticleList();
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="rtl">
+    <head>
+
+        <meta name="description" content="SWE Exercises">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Fahad Alamri">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <title>Order Page Arabic</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="dark_theme.css">
+        <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
+    </head>
+
+<body>
+    
+    <label for="organization-choice">لمن تقوم بتقديم الطلب؟</label>
+    <input list="organization-type" id="1" name="organization-choice" />
+
+    <datalist id="organization-type">
+        <option value="لنفسك"></option>
+        <option value="لمستشفى خاص"></option>
+        <option value="لمستشفى عام"></option>
+        <option value="لمؤسسة رعاية صحية خاصة"></option>
+        <option value="لمؤسسة رعاية صحية عامة"></option>
+    </datalist> <br><br>
+
+    <label for="phone">يرجى إدخال رقم الهاتف:</label>
+    <input type="tel" id="phone" name="phone" placeholder="966512345678+" pattern="+[0-9]{12}">
+    
+    <br><br>
+    <label for="fname">الإسم الأول: </label>
+    <input type="text" id="fname" name="fname" autocomplete="off"><br><br>
+    <label for="lname">الإسم الأخير: </label>
+    <input type="text" id="lname" name="lname" autocomplete="off"><br><br>
+    <label for="email">البريد الإلكتروني: </label>
+    <input type="email" id="email" name="email" autocomplete="on"><br><br>
+
+
+    <label for="package-choice">الباقة التي تقوم بطلبها:</label>
+    <input list="package-type" id="1" name="package-choice" />
+
+    <datalist id="package-type">
+        <option value="أ"></option>
+        <option value="ب"></option>
+        <option value="ج"></option>
+    </datalist> <br><br>
+
+    <form>
+    <aside> 
+        <button type="button" onclick="location.href='orderConf-ar.html';"> إرسال </button>
+    </aside>
+</form>
+
+</body>
+</html>

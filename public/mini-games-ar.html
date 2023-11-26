@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <title>Tic Tac Toe Arabic</title>
+
+    <meta name="description" content="SWE Exercises">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Fahad Alamri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark_theme.css">
+    <link rel="stylesheet" media="screen and (min-width: 769px)" href="desktop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            width: 300px;
+            margin-bottom: 16px;
+        }
+
+        .cell {
+            background-color: beige;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .cell.X {
+            background-color: #ff3333; 
+        }
+
+        .cell.O {
+            background-color: #33cc33; 
+        }
+
+        button {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .turn {
+            font-weight: bold;
+        }
+
+        .current-cell {
+            background-color: #aaf;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1 id="heading">تيك تاك تو (اكس او)</h1>
+        <p id="subheading1">لوحة المفاتيح:</p> 
+        <p id="subheading2">الأسهم ومفتاح الدخول لالُعب</p>
+        <p> اضغط على R لإعادة اللعب</p>
+        <p id="turn">دور اللاعب X</p>
+        <div id="board" tabindex="0">
+            <div class="cell" tabindex="-1" onclick="makeMove(0)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(1)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(2)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(3)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(4)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(5)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(6)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(7)"></div>
+            <div class="cell" tabindex="-1" onclick="makeMove(8)"></div>
+        </div>
+        <button onclick="resetGame()">إعادة</button>
+    </div>
+
+    <script>
+
+    let currentPlayer = "X";
+    let gameActive = true;
+    let gameState = ["", "", "", "", "", "", "", "", ""];
+    let currentCellIndex = 0;
+
+    const winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    function makeMove(cellIndex) {
+        if (gameActive && gameState[cellIndex] === "") {
+            gameState[cellIndex] = currentPlayer;
+            const cellElement = document.getElementsByClassName("cell")[cellIndex];
+            cellElement.innerText = currentPlayer;
+            cellElement.classList.add(currentPlayer);
+
+            if (checkWin()) {
+                document.getElementById("heading").innerHTML = ("اللاعب " + currentPlayer + " فاز!");
+                document.getElementById("turn").innerHTML = "";
+                document.getElementById("subheading1").innerHTML = "لوحة المفاتيح:";
+                document.getElementById("subheading2").innerHTML = "الأسهم ومفتاح الدخول لالُعب";
+                gameActive = false;
+            } else if (checkDraw()) {
+                document.getElementById("heading").innerHTML = ("تعادل!");
+                document.getElementById("turn").innerHTML = "";
+                document.getElementById("subheading1").innerHTML = "لوحة المفاتيح:";
+                document.getElementById("subheading2").innerHTML = "الأسهم ومفتاح الدخول لالُعب";
+                gameActive = false;
+            } else {
+                currentPlayer = currentPlayer === "X" ? "O" : "X";
+                document.getElementById("board").classList.remove("player-x", "player-o");
+                document.getElementById("board").classList.add("player-" + currentPlayer.toLowerCase());
+                document.getElementById("turn").innerText = "دور اللاعب " + currentPlayer;
+                currentCellIndex = cellIndex;
+                document.getElementById("board").focus();
+                updateCurrentCellHighlight();
+            }
+        }
+    }
+
+    function checkWin() {
+        for (let combination of winningCombinations) {
+            const [a, b, c] = combination;
+            if (
+                gameState[a] &&
+                gameState[a] === gameState[b] &&
+                gameState[a] === gameState[c]
+            ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function checkDraw() {
+        return gameState.indexOf("") === -1;
+    }
+
+    function resetGame() {
+        currentPlayer = "X";
+        gameActive = true;
+        gameState = ["", "", "", "", "", "", "", "", ""];
+        currentCellIndex = 0;
+        document.getElementById("heading").innerHTML = ("تيك تاك تو (اكس او)");
+        document.getElementById("board").classList.remove("player-x", "player-o", "game-over");
+        document.getElementById("turn").innerText = "دور اللاعب " + currentPlayer;
+        const cells = document.getElementsByClassName("cell");
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].innerText = "";
+            cells[i].classList.remove("X", "O"); // Remove player class to reset cell color
+        }
+        document.getElementsByClassName("cell")[currentCellIndex].setAttribute("tabindex", "0");
+        document.getElementById("board").focus();
+        updateCurrentCellHighlight();
+    }
+
+    function updateCurrentCellHighlight() {
+        const cells = document.getElementsByClassName("cell");
+        for (let i = 0; i < cells.length; i++) {
+            if (i === currentCellIndex) {
+                cells[i].classList.add("current-cell");
+            } else {
+                cells[i].classList.remove("current-cell");
+            }
+        }
+    }
+
+    document.addEventListener("keydown", function(event) {
+        const key = event.key;
+        if (key === "ArrowUp" && currentCellIndex >= 3) {
+            currentCellIndex -= 3;
+        } else if (key === "ArrowDown" && currentCellIndex <= 5) {
+            currentCellIndex += 3;
+        } else if (key === "ArrowRight" && currentCellIndex % 3 !== 0) {
+            currentCellIndex -= 1;
+        } else if (key === "ArrowLeft" && currentCellIndex % 3 !== 2) {
+            currentCellIndex += 1;
+        } else if (key === "Enter" || key === " ") {
+            makeMove(currentCellIndex);
+        } else if (key === "r" || key === "ق") {
+            resetGame();
+        }
+        updateCurrentCellHighlight();
+    });
+
+    resetGame();
+</script>
+</body>
+</html>
