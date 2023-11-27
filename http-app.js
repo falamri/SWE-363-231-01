@@ -8,9 +8,8 @@ const app = express()
 
 app.use(express.static('./public'))
 
-
-app.all('*', (req, res) => {
-    res.status(404).send('<h1> resource not found </h1>')
+app.get('/', (req, res) => {
+    res.json([{name:'john'},{name:'susan'}])
 })
 
 
